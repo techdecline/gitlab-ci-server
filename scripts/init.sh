@@ -16,8 +16,11 @@ perl -pi.bak1 -e 's/(^nginx\[.redire.*$)/# $1/g' $config_file
 # Disable integrated SSL Certificate
 perl -pi.bak2 -e 's/(^nginx\[.ssl_certifi.*$)/# $1/g' $config_file
 
-# Enable Lets Encrypt
+# Enable Lets Encrypt (if commented)
 perl -pi.bak3 -e 's/# (letsencrypt\[.enable.*= )(.*$)/$1true/g' $config_file 
+
+# Enable Lets Encrypt (if not commented)
+perl -pi.bak3 -e 's/(letsencrypt\[.enable.*= )(.*$)/$1true/g' $config_file 
 
 # Reconfigure Gitlab after Config Modification
 gitlab-ctl reconfigure
