@@ -48,4 +48,7 @@ resource "azurerm_virtual_machine_extension" "vmext" {
       "script": "${base64encode(data.template_file.init-gitlab.rendered)}"
     }
 SETTINGS
+  lifecycle {
+    ignore_changes = [protected_settings]
+  }
 }
