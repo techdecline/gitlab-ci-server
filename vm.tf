@@ -1,7 +1,7 @@
 resource "azurerm_linux_virtual_machine" "vm-gitlab" {
   name                = local.gitlab_vm_name
-  resource_group_name = data.azurerm_resource_group.rg-gitlab.name
-  location            = data.azurerm_resource_group.rg-gitlab.location
+  resource_group_name = var.resource_group_name
+  location            = var.location
   size                = var.vm_size
   admin_username      = "gitlabadmin"
   #custom_data         = base64encode(data.template_file.init-gitlab.rendered)

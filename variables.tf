@@ -35,3 +35,6 @@ variable "dns_label" {
   description = "DNS Name for the Public IP"
   default     = ""
 }
+variable "location" {
+  type = string
+}
