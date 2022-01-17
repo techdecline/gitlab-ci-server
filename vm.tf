@@ -49,6 +49,6 @@ resource "azurerm_virtual_machine_extension" "vmext" {
     }
 SETTINGS
   lifecycle {
-    ignore_changes = [protected_settings]
+    ignore_changes = [protected_settings, tags]
   }
 }
