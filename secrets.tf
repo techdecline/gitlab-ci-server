@@ -11,8 +11,8 @@ resource "random_password" "gitlab-password" {
 }
 
 resource "random_password" "gitlab-pat" {
-  length           = 20
-  special          = false
+  length  = 20
+  special = false
 }
 
 resource "azurerm_key_vault_secret" "secret-gitlab-priv" {
@@ -37,4 +37,9 @@ resource "azurerm_key_vault_secret" "secret-gitlab-pat" {
   name         = "${local.gitlab_vm_name}-pat"
   value        = random_password.gitlab-pat.result
   key_vault_id = var.key_vault_id
+  lifecycle {
+    ignore_changes = [
+      value
+    ]
+  }
 }
